@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 2;
+    background-color:firebrick;
+}
+
+#pool {
+    width: 642px;
+    height: 482px;
+    border: 1px solid whitesmoke;
+    background-color:steelblue;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+#character {
+    width: 10px;
+    height: 10px;
+    background-color: orange;
+    position: relative;
+    top: 230px;
+    left: 310px;
+}
+
+
+#target{
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    position: relative;
+    top: 300px;
+    left: 100px;
+ }
