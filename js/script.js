@@ -1,6 +1,6 @@
 // LISTENER DU JOUEUR
-// R, D and C ARE DEV-ONLY
-// M IS FOR GAME
+// Z, D and C ARE DEV-ONLY
+// M,A,R,C,O ARE FOR GAMER
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
@@ -15,7 +15,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowDown") {
     moveDown();
   }
-  if (event.key === "r") {
+  if (event.key === "z") {
     randomizeR();
   }
   if (event.key === "d") {
@@ -24,7 +24,18 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "c") {
     coord();
   }
-  if (event.key === "m" || event.key === "M") {
+  if (
+    event.key === "M" ||
+    event.key === "m" ||
+    event.key === "A" ||
+    event.key === "a" ||
+    event.key === "R" ||
+    event.key === "r" ||
+    event.key === "C" ||
+    event.key === "c" ||
+    event.key === "O" ||
+    event.key === "o"
+  ) {
     marco();
   }
 });
@@ -42,13 +53,17 @@ function randomizeR() {
   function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
-  randomLeft = getRandomInt(63) * 10;
-  randomTop = getRandomInt(47) * 10;
+  randomLeft = getRandomInt(62) * 10;
+  randomTop = getRandomInt(46) * 10;
   target.style.left = randomLeft + "px";
   target.style.top = randomTop + "px";
   console.log("randomizeD !");
 }
+randomizeR();
 
+// ANIMATION DEPLACEMENT PAS COMME ÇA QUE ÇA MAMRCHE ?
+
+function animation() {}
 
 // DEPLACEMENTS DU JOUEUR
 
@@ -69,7 +84,7 @@ function moveRight() {
     window.getComputedStyle(character).getPropertyValue("left")
   );
   left += 10;
-  if (left < 640) {
+  if (left < 630) {
     character.style.left = left + "px";
     JoueurLeft = JoueurLeft + 10;
     didYouWin();
@@ -93,7 +108,7 @@ function moveDown() {
     window.getComputedStyle(character).getPropertyValue("top")
   );
   top += 10;
-  if (top <= 470) {
+  if (top <= 460) {
     character.style.top = top + "px";
     JoueurTop = JoueurTop + 10;
     didYouWin();
@@ -103,8 +118,9 @@ function moveDown() {
 // GAGNÉ !
 
 function didYouWin() {
-  if (JoueurTop === randomTop && JoueurLeft=== randomLeft) {
-    console.log("YOU WON!");
+  if (JoueurTop === randomTop && JoueurLeft === randomLeft) {
+    changeColor("#E70735");
+    alert("YOU WON!");
   }
 }
 
@@ -115,8 +131,6 @@ function coord() {
   console.log("Position joueur :");
   console.log(JoueurLeft, JoueurTop);
 }
-
-
 
 // CALCUL DISTANCE ENTRE LES 2
 
@@ -133,43 +147,76 @@ function distance() {
   distLeft = JoueurLeft - randomLeft;
   console.log(distLeft, distTop);
   console.log("moyenne positive : ");
-  if(distLeft < 0) {
-    distLeft = distLeft *-1;
+  if (distLeft < 0) {
+    distLeft = distLeft * -1;
   }
-  if(distTop < 0) {
-    distTop = distTop *-1;
+  if (distTop < 0) {
+    distTop = distTop * -1;
   }
   var moyenne = (distLeft + distTop) / 2;
   console.log(moyenne);
 }
+
+// TEST CHANGER COULEUR FOND
+
+function changeColor(color) {
+  document.getElementById("terrain").style.backgroundColor = color;
+}
+
+// "MARCO !!"
 
 function marco() {
   var distLeft = 0;
   var distTop = 0;
   distTop = JoueurTop - randomTop;
   distLeft = JoueurLeft - randomLeft;
-  if(distLeft < 0) {
-    distLeft = distLeft *-1;
+  if (distLeft < 0) {
+    distLeft = distLeft * -1;
   }
-  if(distTop < 0) {
-    distTop = distTop *-1;
+  if (distTop < 0) {
+    distTop = distTop * -1;
   }
   var moyenne = (distLeft + distTop) / 2;
-  if (moyenne > 200) {
+  if (moyenne > 250) {
+    console.log("TT FROID");
+    changeColor("F6E5DE");
+  } else if (moyenne > 225) {
+    console.log("T FROID");
+    changeColor("#fbe3d2");
+  } else if (moyenne > 200) {
     console.log("FROID");
+    changeColor("#fbd4bb");
+  } else if (moyenne > 175) {
+    console.log("FROID");
+    changeColor("#fcc4a6");
   } else if (moyenne > 150) {
-    console.log("TIEDE");
+    console.log("FROID");
+    changeColor("#fcb393");
+  } else if (moyenne > 125) {
+    console.log("FROID/TIEDE");
+    changeColor("#fcb393");
   } else if (moyenne > 100) {
-    console.log("CHAUD");
+    console.log("TIEDE");
+    changeColor("#faa383");
+  } else if (moyenne > 75) {
+    console.log("TIEDE/CHAUD");
+    changeColor("#f99374");
   } else if (moyenne > 50) {
     console.log("T CHAUD");
+    changeColor("#f78168");
   } else if (moyenne > 25) {
     console.log("TT CHAUD");
+    changeColor("#f56e5d");
   } else if (moyenne > 15) {
     console.log("TTT CHAUD");
+    changeColor("#f25954");
   } else if (moyenne > 10) {
     console.log("TTTT CHAUD");
-  } 
-  console.log(moyenne);
+    changeColor("#ef404c");
+  } else if (moyenne <= 10) {
+    console.log("TTTTT CHAUD");
+    changeColor("#E70735");
+  }
 }
+
 
