@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 *{
     padding: 0px;
     margin: 0px;
     height: 100%;
-   
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    font-family: 'Pacifico', cursive;
+    line-height: 110%;
+    font-size: 48px;
+    color: rgb(41, 82, 116);
+    text-shadow: 3px 4px 0px #00aaba;
 }
 
 #terrain {
@@ -10,7 +21,10 @@
     margin: 2px;
     background-color: #fed2b8;
     width: 100%;
-   display: flex;
+    display: flex;
+    transition-duration: 0.3s;
+    transition-property: background-color;
+    transition-timing-function: ease-in;
 }
 
 #pool {
@@ -18,34 +32,46 @@
     height: 482px;
     border: 6px solid #71838a;
     border-radius: 1%;
-    background-color: #01aaba;
+    background-color: #1dbfd1;
     margin: auto;
     box-sizing: border-box;
-    position: relative;
+    position: relative;  
+    z-index: 8; 
+}
+#game {
+    z-index: 9;
+}
+.youwon  {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #be0105;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    
 }
 
 #target{
+    position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #01aaba;
-    position: absolute;
+    background-color: rgb(41, 82, 116);;
+    /* visibility: hidden; */
     left: 0px;
     top: 0px;
-
  }
+
 #character {
+    position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #fdce71   ;
+    background-color: #fdce71;
     border-radius: 150%;
-    position: absolute;
     left: 310px;
     top: 230px;
-    animation-duration: 1s;
-    animation-name: slidein;
-}
-.youwon {
-    transition: all 2s;
-    
+    transition-property: top left;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;   
 }
 

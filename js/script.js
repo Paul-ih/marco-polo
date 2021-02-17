@@ -1,6 +1,6 @@
 // LISTENER DU JOUEUR
-// Z, D and C ARE DEV-ONLY
-// M,A,R,C,O ARE FOR GAMER
+// Z (re-init target), D (log distance), and W (testing) ARE DEV-ONLY
+// MmAaRrCcOo IS FOR GAME
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") {
@@ -21,6 +21,9 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "d") {
     distance();
   }
+  if (event.key === "w") {
+    test();
+  }
   if (event.key === "c") {
     coord();
   }
@@ -40,14 +43,35 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// TEST CALQUE YOUWON
+
+ function test() {
+  console.log("test");
+  let element = document.getElementById("game");
+  element.classList.toggle("youwon");
+
+ }
+
 // POSITION INITIALE DU JOUEUR et DE LA CIBLE
 
-var JoueurLeft = 310;
-var JoueurTop = 230;
+var whatIsLeft = parseInt(
+  window.getComputedStyle(character).getPropertyValue("left")
+);
+var whatIsTop = parseInt(
+  window.getComputedStyle(character).getPropertyValue("top")
+);
+var JoueurLeft = whatIsLeft;
+var JoueurTop = whatIsTop;
 var randomLeft = 0;
 var randomTop = 0;
+var directionTarget = 0;
 
-// POSITION ALEATOIRE DE LA CIBLE
+
+// POSITION INITIALE ALEATOIRE DE LA CIBLE
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 function randomizeR() {
   function getRandomInt(max) {
@@ -61,84 +85,102 @@ function randomizeR() {
 }
 randomizeR();
 
-// ANIMATION DEPLACEMENT PAS COMME ÇA QUE ÇA MAMRCHE ?
 
-function animation() {}
+// DEPLACEMENT REGULIER DE LA CIBLE
+
+setInterval(function(){ 
+  directionTarget = getRandomInt(4)
+  console.log(directionTarget);
+
+  if (directionTarget === 0) {
+    randomTop = randomTop + 10;
+    if (randomTop < 470 && randomTop !== JoueurTop) {
+    target.style.top = randomTop + "px";
+    } else randomTop = randomTop - 10;
+
+  } else if (directionTarget === 1) {
+    randomLeft = randomLeft + 10;
+    if (randomLeft < 630 && randomLeft !== JoueurLeft) {
+      target.style.left = randomLeft + "px";
+    } else randomLeft = randomLeft - 10;
+
+  } else if (directionTarget === 2) {
+    randomTop = randomTop - 10;
+    if (randomTop > 0 && randomTop !== JoueurTop) {
+      target.style.top = randomTop + "px";
+      } else randomTop = randomTop + 10;
+
+   } else if (directionTarget === 3) {
+    randomLeft = randomLeft - 10;
+    if (randomLeft > 0 && randomLeft !== JoueurLeft) {
+      target.style.left = randomLeft + "px";
+    } else randomLeft = randomLeft + 10;
+    }
+
+}, 3000);
+
+
 
 // DEPLACEMENTS DU JOUEUR
 
 function moveLeft() {
-  var left = parseInt(
-    window.getComputedStyle(character).getPropertyValue("left")
-  );
-  left -= 10;
-  if (left >= 0) {
-    character.style.left = left + "px";
+  if (JoueurLeft > 0) {
     JoueurLeft = JoueurLeft - 10;
+    character.style.left = JoueurLeft + "px";
+    console.log(character.style.left);
     didYouWin();
   }
 }
 
 function moveRight() {
-  var left = parseInt(
-    window.getComputedStyle(character).getPropertyValue("left")
-  );
-  left += 10;
-  if (left < 630) {
-    character.style.left = left + "px";
+  if (JoueurLeft < 620) {
     JoueurLeft = JoueurLeft + 10;
+    character.style.left = JoueurLeft + "px";
+    console.log(character.style.left);
     didYouWin();
   }
 }
 
 function moveUp() {
-  var top = parseInt(
-    window.getComputedStyle(character).getPropertyValue("top")
-  );
-  top -= 10;
-  if (top >= 0) {
-    character.style.top = top + "px";
+  if (JoueurTop > 0) {
     JoueurTop = JoueurTop - 10;
+    character.style.top = JoueurTop + "px";
+    console.log(character.style.top);
     didYouWin();
   }
 }
 
 function moveDown() {
-  var top = parseInt(
-    window.getComputedStyle(character).getPropertyValue("top")
-  );
-  top += 10;
-  if (top <= 460) {
-    character.style.top = top + "px";
+  if (JoueurTop < 460) {
     JoueurTop = JoueurTop + 10;
+    character.style.top = JoueurTop + "px";
+    console.log(character.style.top);
     didYouWin();
   }
 }
+
 
 // GAGNÉ !
 
 function didYouWin() {
   if (JoueurTop === randomTop && JoueurLeft === randomLeft) {
-    changeColor("#E70735");
-    alert("YOU WON!");
+    changeColor("#be0105"); console.log("you won");
+    let element = document.getElementById("game");
+    element.classList.toggle("youwon");
+    document.removeEventListener("keydown", (event));
+    
   }
 }
 
-// AFFICHER COORDONNEES JOUEUR
 
-function coord() {
-  console.log("CCCCCCCCCC");
-  console.log("Position joueur :");
-  console.log(JoueurLeft, JoueurTop);
-}
 
-// CALCUL DISTANCE ENTRE LES 2
+// DEVTOOL -- AFFICHAGE DISTANCE ENTRE LES 2
 
 function distance() {
   console.log("DDDDDDDD");
-  console.log("position joueur (Left, Top) : ");
+  console.log("Character position (left, top) :");
   console.log(JoueurLeft, JoueurTop);
-  console.log("position cible : (Left, Top)");
+  console.log("Target position : (left, top)");
   console.log(randomLeft, randomTop);
   console.log("différence : ");
   var distLeft = 0;
@@ -157,13 +199,15 @@ function distance() {
   console.log(moyenne);
 }
 
-// TEST CHANGER COULEUR FOND
+
+// CHANGER COULEUR FOND
 
 function changeColor(color) {
   document.getElementById("terrain").style.backgroundColor = color;
 }
 
-// "MARCO !!"
+
+// « MARCO !! »
 
 function marco() {
   var distLeft = 0;
@@ -177,46 +221,50 @@ function marco() {
     distTop = distTop * -1;
   }
   var moyenne = (distLeft + distTop) / 2;
-  if (moyenne > 250) {
+  if (moyenne >= 300) {
+    console.log("TTTTTT FROID");
+    changeColor("#57B9F4");
+  } else if (moyenne >= 275) {
+    console.log("TTTTT FROID");
+    changeColor("#bfe5ff");
+  } else if (moyenne >= 250) {
+    console.log("TTTT FROID");
+    changeColor("#ffffff");
+  } else if (moyenne >= 225) {
+    console.log("TTT FROID");
+    changeColor("#ffede8");
+  } else if (moyenne >= 200) {
     console.log("TT FROID");
-    changeColor("F6E5DE");
-  } else if (moyenne > 225) {
+    changeColor("#fddbd2");
+  } else if (moyenne >= 175) {
     console.log("T FROID");
-    changeColor("#fbe3d2");
-  } else if (moyenne > 200) {
+    changeColor("#fbc9bc");
+  } else if (moyenne >= 150) {
     console.log("FROID");
-    changeColor("#fbd4bb");
-  } else if (moyenne > 175) {
-    console.log("FROID");
-    changeColor("#fcc4a6");
-  } else if (moyenne > 150) {
-    console.log("FROID");
-    changeColor("#fcb393");
-  } else if (moyenne > 125) {
+    changeColor("#f8b7a7");
+  } else if (moyenne >= 125) {
     console.log("FROID/TIEDE");
-    changeColor("#fcb393");
-  } else if (moyenne > 100) {
+    changeColor("#f3a592");
+  } else if (moyenne >= 100) {
     console.log("TIEDE");
-    changeColor("#faa383");
-  } else if (moyenne > 75) {
+    changeColor("#ee937d");
+  } else if (moyenne >= 75) {
     console.log("TIEDE/CHAUD");
-    changeColor("#f99374");
-  } else if (moyenne > 50) {
+    changeColor("#e88169");
+  } else if (moyenne >= 50) {
     console.log("T CHAUD");
-    changeColor("#f78168");
-  } else if (moyenne > 25) {
+    changeColor("#e16e55");
+  } else if (moyenne >= 25) {
     console.log("TT CHAUD");
-    changeColor("#f56e5d");
-  } else if (moyenne > 15) {
+    changeColor("#d95b42");
+  } else if (moyenne >= 15) {
     console.log("TTT CHAUD");
-    changeColor("#f25954");
-  } else if (moyenne > 10) {
+    changeColor("#d1462f");
+  } else if (moyenne >= 10) {
     console.log("TTTT CHAUD");
-    changeColor("#ef404c");
-  } else if (moyenne <= 10) {
+    changeColor("#c82e1b");
+  } else if (moyenne < 10) {
     console.log("TTTTT CHAUD");
-    changeColor("#E70735");
+    changeColor("#be0105");
   }
 }
-
-
