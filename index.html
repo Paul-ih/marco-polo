@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,52 +9,115 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" type="image/png" href="image/mp.png">
 </head>
+
 <body>
 
 
 
 
     <div id="title">
-        <h1 id="reboot">marcoPolo</h1>
+        <h1>marcoPolo</h1>
+        <h4>A summertime video game. <p>&nbsp;</p></h4>
+        <div class="menu">
 
-        <h3>whatisit?</h3>
-<h4>
-    Marco Polo is a fun swimming pool game. The main player has to close his eyes and say “Marco!”. The others have to reply “Polo!”, while he tries to locate them by ear and touch them.
-</h4>
+            <table>
 
-        <h3>howtoPlay?</h3>
-<h4>
-    Move the cursor with the arrow keys. Try to locate the target by using one of the keys for “MARCO”. The redder the screen, the closer you are. Careful! The target is also moving!
-</h4>
+                <tr>
+                    <td width="50%">
+                        <h3>howtoPlay?</h3>
+                    </td>
+                    <td width="50%">
+                        <h3>whatisit?</h3>
+                    </td>
+                  
+                </tr>
+                <tr>
+                    <td width="50%">
+                        <h4>
+                            Move the cursor with the arrow keys. Try to <br>
+                            locate the target by using one of <br>
+                            the keys for “MARCO”. The <font color="#be0105">redder</font> the screen, <br>
+                            the closer you are. Be fast, the target is also moving!
+                        </h4>
+                    </td>
+                    <td width="50%">
+                        <h4>In the US, Marco Polo is a fun swimming pool game.<br>
+                            The main player closes his eyes and shouts “Marco!”. &nbsp;<br>
+                            The others players have to reply “Polo!”, <br>
+                            while he tries to locate them by ear and tag them.</h4>
+                    </td>
+                   
+                </tr>
+            </table>
 
 
-    </div>
-    
-<div id="youwon">
-    <h1 id="reboot">youWon!</h1> <h3><a href="index.html"> playAgain</a></h3>
-<h1>Un autre texte qui va pas s'afficher</h1>
-</div>
 
-<div id="terrain">
-    <div id="pool">
-        <div id="game">
-            <h5>marcoPolo</h5> 
 
-            <div id="target"></div>
-            <div id="character"></div>
-           
+
+
+
+            <center>
+                <h3 id="reboot">playNow!</h3>
+            </center>
+        </div>
+
+
+        <div class="titlefooter">
+            <h4>
+
+                Game design by Paul Parant, IronHack Paris, Feb. 2021
+            </h4>
         </div>
     </div>
-    <h4 id="reboot">
-        <div id="reboot">Use arrow keys to move and M, A, R, C or O keys to locate target.<br>Back to menu</div></h4>
-</div>
 
 
 
-<audio id="sounds" loop= "false" volume = "60">
-    <source id="dive" src="sounds/dive.mp3"> 
-</audio>
+    <div id="youwon">
+        <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+        <h1 id="reboot">youWon!</h1>
+        <div id="reboot">
+            <h4>
+                <p>Congratulations!</p>
+                <p>Now “Polo” becomes “Marco” and vice versa.</p>
+                <p>
+            </h4>
+            <h3 id="replay">
+                playAgain
+            </h3>
+            </p>
+        </div>
+
+    </div>
+
+
+
+    <div id="terrain">
+        <div id="pool">
+            <div id="game">
+                <h5>marcoPolo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </h5>
+
+                <div id="target"></div>
+                <div id="character"></div>
+
+            </div>
+        </div>
+
+        <div id="reboot">
+            <h4>
+                Use arrow keys to move and M, A, R, C or O keys to locate target.
+                <br><a href="index.html" id="reboot">Back to menu</a>
+            </h4>
+        </div>
+    </div>
+
+
+
+    <audio id="sounds" loop="false" volume="60">
+        <source id="dive" src="sounds/dive.mp3">
+    </audio>
 
 </body>
-<script type= "module" src="js/script.js"></script>
+<script type="module" src="js/script.js"></script>
+
 </html>

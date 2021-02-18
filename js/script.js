@@ -41,6 +41,9 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+
+// JOUER DEPUIS MENU
+
 document.getElementById("reboot").addEventListener("click", function() {
   randomizeR();
   var x = document.getElementById("title");
@@ -49,7 +52,25 @@ document.getElementById("reboot").addEventListener("click", function() {
   } else {
     x.style.display = "none";
   }
+  
 });
+
+
+// REJOUER APRES VICTOIRE
+
+document.getElementById("replay").addEventListener("click", function() {
+  
+  var x = document.getElementById("youwon");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  randomizeR();
+  changeColor("#fed2b8");
+});
+
+
 
 // WEBTOOL : TESTS
 
