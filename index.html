@@ -6,23 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marco Polo</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" type="image/png" href="image/mp.png">
 </head>
 <body>
+
+
+
+
+    <div id="title">
+        <h1 id="reboot">marcoPolo</h1>
+
+        <h3>whatisit?</h3>
+<h4>
+    Marco Polo is a fun swimming pool game. The main player has to close his eyes and say “Marco!”. The others have to reply “Polo!”, while he tries to locate them by ear and touch them.
+</h4>
+
+        <h3>howtoPlay?</h3>
+<h4>
+    Move the cursor with the arrow keys. Try to locate the target by using one of the keys for “MARCO”. The redder the screen, the closer you are. Careful! The target is also moving!
+</h4>
+
+
+    </div>
+    
+<div id="youwon">
+    <h1 id="reboot">youWon!</h1> <h3><a href="index.html"> playAgain</a></h3>
+<h1>Un autre texte qui va pas s'afficher</h1>
+</div>
 
 <div id="terrain">
     <div id="pool">
         <div id="game">
-        
-    <div id="target">T</div>
-    <div id="character"></div>
-    
-  
-    <h1>marcoPolo</h1> 
-</div>
-  
+            <h5>marcoPolo</h5> 
 
+            <div id="target"></div>
+            <div id="character"></div>
+           
+        </div>
+    </div>
+    <h4 id="reboot">
+        <div id="reboot">Use arrow keys to move and M, A, R, C or O keys to locate target.<br>Back to menu</div></h4>
 </div>
-</div>
+
+
+
+<audio id="sounds" loop= "false" volume = "60">
+    <source id="dive" src="sounds/dive.mp3"> 
+</audio>
 
 </body>
 <script type= "module" src="js/script.js"></script>

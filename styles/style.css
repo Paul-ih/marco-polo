@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Pacifico&display=swap');
 
 *{
     padding: 0px;
@@ -7,25 +7,64 @@
     overflow: hidden;
 }
 
-body {
-    height: 100%;
-    font-family: 'Pacifico', cursive;
-    line-height: 110%;
-    font-size: 48px;
-    color: rgb(41, 82, 116);
-    text-shadow: 3px 4px 0px #00aaba;
+body {
+    
 }
 
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: rgb(41, 82, 116);
+
+    text-shadow: 3px 4px 0px #00aaba;
+    font-size: 72px;
+    height: 100%;
+}
+
+h2 {
+    font-family: 'Lato', sans-serif;
+    color: #1dbfd1;
+    font-size : 42px;
+}
+h3 {
+    font-family: 'Pacifico', cursive;
+    color: rgb(41, 82, 116);
+    line-height: 110%;
+    text-shadow: 3px 4px 0px #00aaba;
+    font-size: 46px;
+    height: 100%;
+}
+
+h4 {
+    font-family: 'Lato', sans-serif;
+    color: #1dbfd1;
+    font-size : 24px;
+}
+h5 {
+    font-family: 'Pacifico', cursive;
+    color: #1e87a8;
+
+    text-shadow: 3px 4px 0px #00aaba;
+    font-size: 72px;
+    height: 100%;
+}
+
+
+
+
+
 #terrain {
-    padding: 0px;
+    padding: 50px;
     margin: 2px;
     background-color: #fed2b8;
     width: 100%;
-    display: flex;
+    text-align: center;
     transition-duration: 0.3s;
     transition-property: background-color;
     transition-timing-function: ease-in;
+    list-style: none;
 }
+
+
 
 #pool {
     width: 642px;
@@ -40,24 +79,53 @@ body {
 }
 #game {
     z-index: 9;
-}
-.youwon  {
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #be0105;
-    justify-content: center;
-    align-content: center;
-    position: absolute;
-    
+
 }
 
-#target{
+#title {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    padding: 50px;
+    opacity: 1;
+    display:block;
+    z-index: 10;
+    background-color: #fed2b8;
+}
+
+
+#youwon {
+        
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        background-color: #be0105;
+        z-index: 10;
+        text-align: center;
+        vertical-align: center;
+       
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 2s;
+    }
+    
+    @keyframes fadeInOpacity {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+
+#target {
     position: absolute;
     width: 10px;
     height: 10px;
     background-color: rgb(41, 82, 116);;
-    /* visibility: hidden; */
+    visibility: hidden;
     left: 0px;
     top: 0px;
  }
@@ -74,4 +142,3 @@ body {
     transition-duration: 0.3s;
     transition-timing-function: ease-in;   
 }
-

@@ -1,5 +1,6 @@
 // LISTENER DU JOUEUR
-// Z (re-init target), D (log distance), and W (testing) ARE DEV-ONLY
+
+// Z (re-init target), D (log distance), and T (testing) ARE DEV-ONLY
 // MmAaRrCcOo IS FOR GAME
 
 document.addEventListener("keydown", (event) => {
@@ -21,11 +22,8 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "d") {
     distance();
   }
-  if (event.key === "w") {
+  if (event.key === "t") {
     test();
-  }
-  if (event.key === "c") {
-    coord();
   }
   if (
     event.key === "M" ||
@@ -43,13 +41,34 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// TEST CALQUE YOUWON
+document.getElementById("reboot").addEventListener("click", function() {
+  randomizeR();
+  var x = document.getElementById("title");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+});
+
+// WEBTOOL : TESTS
 
  function test() {
-  console.log("test");
-  let element = document.getElementById("game");
-  element.classList.toggle("youwon");
 
+  console.log("test");
+  var x = document.getElementById("title");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  
+
+  // element.classList.toggle("youwon");
+  // let element = document.getElementById("game");
+  // element.classList.toggle("youwon");
+  // let flash = document.getElementById("terrain");
+  // flash.classList.add("animated");
  }
 
 // POSITION INITIALE DU JOUEUR et DE LA CIBLE
@@ -67,6 +86,12 @@ var randomTop = 0;
 var directionTarget = 0;
 
 
+// SON PLONGEON
+
+function play(){
+  var audio = document.getElementById("audio");
+}
+
 // POSITION INITIALE ALEATOIRE DE LA CIBLE
 
 function getRandomInt(max) {
@@ -82,6 +107,7 @@ function randomizeR() {
   target.style.left = randomLeft + "px";
   target.style.top = randomTop + "px";
   console.log("randomizeD !");
+ play();
 }
 randomizeR();
 
@@ -89,35 +115,38 @@ randomizeR();
 // DEPLACEMENT REGULIER DE LA CIBLE
 
 setInterval(function(){ 
-  directionTarget = getRandomInt(4)
-  console.log(directionTarget);
+  directionTarget = getRandomInt(4);
 
   if (directionTarget === 0) {
     randomTop = randomTop + 10;
     if (randomTop < 470 && randomTop !== JoueurTop) {
     target.style.top = randomTop + "px";
+    console.log("Target has gone down");
     } else randomTop = randomTop - 10;
 
   } else if (directionTarget === 1) {
     randomLeft = randomLeft + 10;
     if (randomLeft < 630 && randomLeft !== JoueurLeft) {
       target.style.left = randomLeft + "px";
+      console.log("Target has gone right");
     } else randomLeft = randomLeft - 10;
 
   } else if (directionTarget === 2) {
     randomTop = randomTop - 10;
     if (randomTop > 0 && randomTop !== JoueurTop) {
       target.style.top = randomTop + "px";
+      console.log("Target has gone up");
       } else randomTop = randomTop + 10;
 
    } else if (directionTarget === 3) {
     randomLeft = randomLeft - 10;
     if (randomLeft > 0 && randomLeft !== JoueurLeft) {
       target.style.left = randomLeft + "px";
+      console.log("Target has gone left");
     } else randomLeft = randomLeft + 10;
     }
 
-}, 3000);
+}, 5000);
 
 
 
@@ -164,13 +193,15 @@ function moveDown() {
 
 function didYouWin() {
   if (JoueurTop === randomTop && JoueurLeft === randomLeft) {
-    changeColor("#be0105"); console.log("you won");
+    changeColor("#be0105"); console.log("YOU WON !");
     let element = document.getElementById("game");
     element.classList.toggle("youwon");
     document.removeEventListener("keydown", (event));
-    
+    youwon.style.display = "block";
+ 
   }
 }
+
 
 
 
