@@ -4,6 +4,7 @@
 // MmAaRrCcOo IS FOR GAME
 
 document.addEventListener("keydown", (event) => {
+  console.log(event);
   if (event.key === "ArrowLeft") {
     moveLeft();
   }
@@ -52,7 +53,7 @@ document.getElementById("reboot").addEventListener("click", function() {
   } else {
     x.style.display = "none";
   }
-  
+  // reboot.style.cursor = 'grab'; 
 });
 
 

@@ -40,7 +40,7 @@ h4 {
 h5 {
     font-family: 'Pacifico', cursive;
     color: #1e87a8;
-
+    text-align: center;
     text-shadow: 3px 4px 0px #00aaba;
     font-size: 72px;
 }
@@ -48,6 +48,7 @@ h5 {
 a {
     text-decoration: none;
     color: rgb(41, 82, 116);
+    cursor: grab;
 }
 
 
@@ -69,6 +70,7 @@ a:focus {
 a:hover {
     text-decoration: none;
     color: rgb(41, 82, 116);
+    
 }
 
 a:active {
@@ -79,6 +81,7 @@ a:active {
 
 #title {
     position: fixed;
+    
     width: 100vw;
     height: 100vh;
     padding: 50px;
@@ -101,6 +104,12 @@ a:active {
 
 }
 
+
+#launch {
+    margin-top: 20px;
+    text-align: center;
+    line-height: 3em;
+}
 
 #youwon {
     
